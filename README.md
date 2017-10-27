@@ -100,10 +100,14 @@ If you have an HDMI monitor, keyboard, and mouse available, you can plug them in
 
 I recommend learning how to access your pi directly over a network connection and a command line, though.
 
-To connect without a monitor, just plug your device into your host machine using an ethernet cable, and then (making sure you have Bonjour for Windows installed) just ping your device using `ping <device name>.local`. When you pull a pi out of its box, its name is `raspberrypi`.
+To connect without a monitor, just plug your device into your host machine using an ethernet cable, and then (making sure you have Bonjour for Windows installed) just ping your device using `ping <device name>.local`.
+When you pull a pi out of its box, its name is `raspberrypi`.
 
 ### Configuring WiFi Networks
-When you first set up a device, it doesn't know what your wireless networks are called or what your passwords are. You have to configure that. Once you do, you don't need to rely on the ethernet cable any more. Here's how to configure the networks...
+When you first set up a device, it doesn't know what your wireless networks are called or what your passwords are.
+You have to configure that.
+Once you do, you don't need to rely on the ethernet cable any more.
+Here's how to configure the networks...
 
 1. Initiate a remote connection to the device using...
     ```
@@ -123,12 +127,19 @@ When you first set up a device, it doesn't know what your wireless networks are 
     ```
     If you want, you can add another property to multiple networks called `priority` to determine the order in which networks will be attempted. Higher numbers are tried first.
 
-Now remove the ethernet cable and reboot your device with `sudo reboot now`. You can always run `wpa_cli status` to see if you're connected, and you can `ping microsoft.com` to be sure.
+Now remove the ethernet cable and reboot your device with `sudo reboot now`.
+You can always run `wpa_cli status` to see if you're connected, and you can `ping microsoft.com` to be sure.
 
 ### Configuring the Device
 There are a couple of things you need to do when you first get your device installed and get connected.
 
-Most of the configuration options are found in a utility called `raspi-config`. To run it, use `sudo raspi-config`. I recommend checking to local to be sure it's configured for your area. It's configured for en-GB out of the box. You should also enable the camera. If you'd like, you can also go to the Advanced Options and change your hostname... especially if you're going to be using your pi on the same network with others. Otherwise, they're all called `raspberrypi` and it can get confusing.
+Most of the configuration options are found in a utility called `raspi-config`.
+To run it, use `sudo raspi-config`.
+I recommend checking to local to be sure it's configured for your area.
+It's configured for en-GB out of the box.
+You should also enable the camera.
+If you'd like, you can also go to the Advanced Options and change your hostname... especially if you're going to be using your pi on the same network with others.
+Otherwise, they're all called `raspberrypi` and it can get confusing.
 
 ### Installing Node on the Device
 JavaScript via Node.js is just one of the languages you can write on a Raspberry Pi, but if you ask me it's the most exciting one.
@@ -152,26 +163,34 @@ The `wget` line downloads it, the `tar` line decompresses it, the `sudo mv` line
 By the way, you can download multiple versions of node and put them all in the `/usr/local/node` folder side by side and then just run the `ln` commands to change your pointers to the version you want at any given time. 
 
 ## IoT Hub Discussion and Setup
-Azure IoT Hub is sort of the center of it all. You can have millions of extremely chatty devices talking to one IoT Hub witihout a problem, and then you can do all sorts of fun things with those messages on the backend.
-The IoT Hub service is in the cloud and needs to be set up before we can write code to access it. 
+Azure IoT Hub is sort of the center of it all.
+You can have millions of extremely chatty devices talking to one IoT Hub witihout a problem, and then you can do all sorts of fun things with those messages on the backend.
+The IoT Hub service is in the cloud and needs to be set up before we can write code to access it.
 
 ### Creating our IoT Hub
-We'll walk through the creation of an IoT Hub. This step too is very easy, but you will need an Azure subscription. If you don't have one already, go to [azure.com](http://azure.com) and click to start the free trial.
+We'll walk through the creation of an IoT Hub.
+This step too is very easy, but you will need an Azure subscription.
+If you don't have one already, go to [azure.com](http://azure.com) and click to start the free trial.
 
-To create our hub, we'll start by creating a Resource Group. A Resource Group is a logical group of resources that often represent a single solution and are likely deployed together, managed together, and deleted together. I called mine `iot-workshop`, but you can call yours whatever you want.
+To create our hub, we'll start by creating a Resource Group.
+A Resource Group is a logical group of resources that often represent a single solution and are likely deployed together, managed together, and deleted together.
+I called mine `iot-workshop`, but you can call yours whatever you want.
 
 > Note to self: add image
 
-Next, we'll hit the plus button above the Resources list in our Resource Group (RG) and search to find the IoT Hub resource. That will bring us to this short form to fill out.
+Next, we'll hit the plus button above the Resources list in our Resource Group (RG) and search to find the IoT Hub resource.
+That will bring us to this short form to fill out.
 
 > Note to self: add image
 
 And that's it!
 
 ### Registering a Device
-We have a hub, but there has to be an explicit registration for every device that checks in to it. That's so that unauthorized code is unable to act like one of our devices and send spoofed messages.
+We have a hub, but there has to be an explicit registration for every device that checks in to it.
+That's so that unauthorized code is unable to act like one of our devices and send spoofed messages.
 
-Let's use the `iothub-explorer` utility to add a device. It's oh so easy. To be clear, this should be done on your _host machine_.
+Let's use the `iothub-explorer` utility to add a device.
+It's oh so easy. To be clear, this should be done on your _host machine_.
 
 First install it...
 

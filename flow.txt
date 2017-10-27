@@ -41,14 +41,4 @@ Connecting to Our IoT Hub
 Talking to GPIO
 Taking a Picture
 Analyzing the Image with Cognitive Services  (Talk and Code )
-1ending the Results to IoT Hub
-
-
-
-
-
-
-
-
-
-          
+sending the Results to IoT Hub
